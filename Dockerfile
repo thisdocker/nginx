@@ -19,6 +19,8 @@ RUN apk update && apk upgrade \
   --add-module=../ngx-fancyindex-${FANCYINDEX_VERSION} \
   && make -j$(getconf _NPROCESSORS_ONLN) \
   && make install \
+  # && sed -i '34a \ \ \ \ server_tokens off;\n' /usr/local/nginx/conf/nginx.conf \
+  && sed -i 's/#gzip  on;/#gzip  on;\n\n\ \ \ \ server_tokens off;/g' /usr/local/nginx/conf/nginx.conf \
   && sed -i 's/\/\$nginx_version//g' /usr/local/nginx/conf/fastcgi_params \
   && sed -i 's/\/\$nginx_version//g' /usr/local/nginx/conf/fastcgi.conf \
   && cd ../ \
