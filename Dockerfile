@@ -19,6 +19,8 @@ RUN apk update && apk upgrade \
   --add-module=../ngx-fancyindex-${FANCYINDEX_VERSION} \
   && make -j$(getconf _NPROCESSORS_ONLN) \
   && make install \
+  && sed -i 's/\/\$nginx_version//g' /usr/local/nginx/conf/fastcgi_params \
+  && sed -i 's/\/\$nginx_version//g' /usr/local/nginx/conf/fastcgi.conf \
   && cd ../ \
   && rm ngx-fancyindex.tar.gz \
   && rm -rf ngx-fancyindex-${FANCYINDEX_VERSION} \
@@ -37,7 +39,5 @@ CMD ["nginx", "-g", "daemon off;"]
 
 # /usr/local/nginx/conf/
 # /usr/local/nginx/conf/nginx.conf
-# /usr/local/nginx/conf/fastcgi_params /usr/local/nginx/conf/fastcgi.conf
 # /usr/local/nginx/modules/
-
 # /data/website/
