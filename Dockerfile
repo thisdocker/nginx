@@ -1,5 +1,7 @@
 FROM wuyumin/base
 
+LABEL maintainer="Yumin Wu"
+
 ARG NGINX_VERSION=1.14.2
 ARG FANCYINDEX_VERSION=0.4.3
 
