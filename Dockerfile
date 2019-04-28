@@ -2,7 +2,7 @@ FROM wuyumin/base
 
 LABEL maintainer="Yumin Wu"
 
-ARG NGINX_VERSION=1.14.2
+ARG NGINX_VERSION=1.16.0
 ARG FANCYINDEX_VERSION=0.4.3
 
 RUN apk update && apk upgrade \
